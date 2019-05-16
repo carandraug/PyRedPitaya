@@ -6,7 +6,7 @@ from myhdl import intbv
 
 
 from .memory import MemoryInterface
-from .enum import Enum
+from enum import Enum
 
 
 class UnsignedInteger(object):
@@ -205,7 +205,7 @@ class Scope(MemoryInterface):
     def arm_trigger(self,v=True):
         self.trigger_bit = v
     
-    trigger_source = GetSetRegister(0x4, TriggerSource())
+    trigger_source = GetSetRegister(0x4, TriggerSource.immediately)
     threshold_ch1 = GetSetRegister(0x8, SignedInteger(size=14))
     threshold_ch2 = GetSetRegister(0xC, SignedInteger(size=14))
     trigger_delay = GetSetRegister(0x10, UnsignedInteger(size=32))
@@ -280,7 +280,7 @@ class Scope(MemoryInterface):
                 break
             if f == 65537:
                 self.data_decimation = 65536
-                print "Frequency too low: Impossible to sample the entire waveform"
+                print("Frequency too low: Impossible to sample the entire waveform")
 
 
             
@@ -568,4 +568,4 @@ if __name__=="__main__":
     sleep(1)
     t0 = time()
     red_pitaya.scope.data_ch1
-    print time() - t0
+    print(time() - t0)

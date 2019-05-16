@@ -148,7 +148,7 @@ setup(name='PyRedPitaya',
       description='Python utilities for redpitaya',
       author=u'Pierre Cladé',
       author_email='pierre.clade@upmc.fr',
-      packages=['PyRedPitaya', 'PyRedPitaya.enum'],
+      packages=['PyRedPitaya'],
       install_requires=['myhdl', 'rpyc', 'cached_property', 'numpy'],
       cmdclass=cmdclass, 
      )
