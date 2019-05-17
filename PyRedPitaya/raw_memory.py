@@ -49,5 +49,5 @@ class BoardRawMemory(object):
         if not isinstance(values, str):
             values = np.array(values, dtype='uint32')
             values = str(values.data)
-        buf = create_string_buffer(values)
+        buf = create_string_buffer(values.encode())
         self.a.write_values(addr, cast(buf, POINTER(ctypes.c_uint32)), len(values)//4)
