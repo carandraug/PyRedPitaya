@@ -28,7 +28,7 @@ class SignedInteger(object):
 class EnumTypeWrapper(UnsignedInteger):
     def __init__(self, enum_type):
         self._enum_type = enum_type
-        maximum = max(self._enum_type._reverse_dct.keys())
+        maximum = max(self._enum_type, key=lambda x: x.value)
         size = int(ceil(log(16, 2)))
         super(EnumTypeWrapper, self).__init__(size=size)
     def to_python(self, val):
@@ -205,7 +205,7 @@ class Scope(MemoryInterface):
     def arm_trigger(self,v=True):
         self.trigger_bit = v
     
-    trigger_source = GetSetRegister(0x4, TriggerSource)
+    trigger_source = GetSetRegister(0x4, TriggerSource.none)
     threshold_ch1 = GetSetRegister(0x8, SignedInteger(size=14))
     threshold_ch2 = GetSetRegister(0xC, SignedInteger(size=14))
     trigger_delay = GetSetRegister(0x10, UnsignedInteger(size=32))
