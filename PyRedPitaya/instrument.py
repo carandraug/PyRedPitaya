@@ -205,7 +205,7 @@ class Scope(MemoryInterface):
     def arm_trigger(self,v=True):
         self.trigger_bit = v
     
-    trigger_source = GetSetRegister(0x4, TriggerSource.immediately)
+    trigger_source = GetSetRegister(0x4, TriggerSource)
     threshold_ch1 = GetSetRegister(0x8, SignedInteger(size=14))
     threshold_ch2 = GetSetRegister(0xC, SignedInteger(size=14))
     trigger_delay = GetSetRegister(0x10, UnsignedInteger(size=32))
